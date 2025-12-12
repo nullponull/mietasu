@@ -169,8 +169,8 @@ export default function Home() {
                     <Shield className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Security Status</div>
-                    <div className="font-bold text-sm">100% Local & Secure</div>
+                    <div className="text-xs text-muted-foreground">セキュリティ</div>
+                    <div className="font-bold text-sm">100%ローカルで安全</div>
                   </div>
                 </motion.div>
                 
@@ -183,8 +183,8 @@ export default function Home() {
                     <Database className="w-6 h-6" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Knowledge Base</div>
-                    <div className="font-bold text-sm">Auto-Updated</div>
+                    <div className="text-xs text-muted-foreground">ナレッジベース</div>
+                    <div className="font-bold text-sm">自動更新</div>
                   </div>
                 </motion.div>
               </motion.div>
@@ -495,7 +495,8 @@ export default function Home() {
                   <div className="text-sm font-medium text-primary mb-2">セキュリティ重視の企業向け</div>
                   <CardTitle className="text-2xl font-bold">オンプレミスプラン</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-1">
-                    <span className="text-3xl font-bold">お問い合わせ</span>
+                    <span className="text-3xl font-bold">¥1,000,000</span>
+                    <span className="text-muted-foreground">〜</span>
                   </div>
                   <CardDescription className="mt-2">
                     個別お見積もり

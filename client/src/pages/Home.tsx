@@ -20,7 +20,7 @@ const Home: React.FC = () => {
               <a href="#pricing">料金プラン</a>
               <a href="#flow">導入フロー</a>
             </div>
-            <a href="#/demo" className="btn btn-primary mr-4">デモ画面を見る</a>
+            <a href="#/demo" className="btn btn-outline mr-4">デモ画面を見る</a>
             <button className="btn btn-primary">お問い合わせ</button>
           </nav>
         </div>
@@ -49,10 +49,10 @@ const Home: React.FC = () => {
                   会議も、ドキュメントも、チャットも。社内のあらゆる情報を、セキュアな環境で資産に変える。
                   NotionやConfluenceでは実現できない、最高レベルのセキュリティと業務効率化を両立します。
                 </p>
-                <div className="hero-actions">
+                <div className="hero-actions flex flex-wrap gap-4">
                   <button className="btn btn-primary">資料をダウンロード</button>
-                  <a href="#/demo" className="btn btn-outline">デモ画面を見る</a>
-                  <button className="btn btn-outline">お問い合わせ</button>
+                  <a href="#/demo" className="btn btn-outline bg-white/80 backdrop-blur-sm hover:bg-white">デモ画面を見る</a>
+                  <button className="btn btn-outline bg-white/80 backdrop-blur-sm hover:bg-white">お問い合わせ</button>
                 </div>
               </div>
 

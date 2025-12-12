@@ -109,6 +109,7 @@
 .hero-actions {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 /* Mock UI */

@@ -43,6 +43,7 @@ export default function Home() {
             <a href="#features" className="transition-colors hover:text-primary">機能</a>
             <a href="#comparison" className="transition-colors hover:text-primary">他社比較</a>
             <a href="#cases" className="transition-colors hover:text-primary">導入事例</a>
+            <a href="#pricing" className="transition-colors hover:text-primary">料金プラン</a>
             <a href="#flow" className="transition-colors hover:text-primary">導入フロー</a>
             <Button variant="default" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
               お問い合わせ
@@ -429,6 +430,112 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="pricing" className="py-20 bg-muted/30">
+          <div className="container">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <h2 className="text-3xl font-bold tracking-tight mb-4 text-primary">
+                選べる2つの提供形態
+              </h2>
+              <p className="text-muted-foreground">
+                セキュリティ要件や運用体制に合わせて、最適なプランをお選びいただけます。
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {/* Cloud Plan */}
+              <Card className="relative overflow-hidden border-border hover:border-primary/50 transition-all hover:shadow-lg flex flex-col">
+                <CardHeader className="text-center pb-2">
+                  <div className="text-sm font-medium text-muted-foreground mb-2">手軽に始めたい企業向け</div>
+                  <CardTitle className="text-2xl font-bold">クラウドプラン</CardTitle>
+                  <div className="mt-4 flex items-baseline justify-center gap-1">
+                    <span className="text-3xl font-bold">¥50,000</span>
+                    <span className="text-muted-foreground">/月〜</span>
+                  </div>
+                  <CardDescription className="mt-2">
+                    初期費用 ¥100,000〜
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-6 pt-6">
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>最短3営業日で利用開始</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>サーバー管理・保守不要</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>常に最新のAIモデルを利用可能</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>セキュアなプライベートクラウド環境</span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <div className="p-6 pt-0 mt-auto">
+                  <Button className="w-full" variant="outline">詳細を見る</Button>
+                </div>
+              </Card>
+
+              {/* On-Premise Plan */}
+              <Card className="relative overflow-hidden border-primary shadow-md flex flex-col transform md:-translate-y-4">
+                <div className="absolute top-0 inset-x-0 h-1 bg-primary"></div>
+                <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
+                  人気
+                </div>
+                <CardHeader className="text-center pb-2">
+                  <div className="text-sm font-medium text-primary mb-2">セキュリティ重視の企業向け</div>
+                  <CardTitle className="text-2xl font-bold">オンプレミスプラン</CardTitle>
+                  <div className="mt-4 flex items-baseline justify-center gap-1">
+                    <span className="text-3xl font-bold">お問い合わせ</span>
+                  </div>
+                  <CardDescription className="mt-2">
+                    個別お見積もり
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-6 pt-6">
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>完全なデータ主権とセキュリティ</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>社内ネットワーク（イントラネット）で完結</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>専用ローカルLLMサーバーの提供</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>既存システムとの柔軟な連携開発</span>
+                    </li>
+                    <li className="flex items-center">
+                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>専任エンジニアによる導入サポート</span>
+                    </li>
+                  </ul>
+                </CardContent>
+                <div className="p-6 pt-0 mt-auto">
+                  <Button className="w-full bg-primary text-primary-foreground hover:bg-primary/90">お問い合わせ</Button>
+                </div>
+              </Card>
+            </div>
+            
+            <div className="mt-12 text-center">
+              <p className="text-sm text-muted-foreground">
+                ※ 価格は税抜表示です。ユーザー数やデータ量に応じて変動する場合があります。<br/>
+                ※ オンプレミスプランには、ハードウェア費用が含まれる場合があります。
+              </p>
             </div>
           </div>
         </section>

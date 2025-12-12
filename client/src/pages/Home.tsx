@@ -70,8 +70,8 @@ export default function Home() {
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="/images/key-visual-mietasu.png" 
-              alt="Mietasu Key Visual" 
+              src="/images/key-visual-abstract.png" 
+              alt="Secure Data Flow Abstract Visual" 
               className="w-full h-full object-cover opacity-30"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background"></div>
@@ -194,8 +194,8 @@ export default function Home() {
           <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border group cursor-pointer">
             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
             <img 
-              src="/images/demo-thumbnail.png" 
-              alt="Mietasu Demo Interface" 
+              src="/images/demo-thumbnail-abstract.png" 
+              alt="Mietasu Demo Interface Abstract" 
               className="w-full aspect-video object-cover"
             />
             <div className="absolute inset-0 flex items-center justify-center z-20">

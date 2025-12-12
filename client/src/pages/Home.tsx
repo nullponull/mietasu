@@ -448,58 +448,61 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               {/* Cloud Plan */}
-              <Card className="relative overflow-hidden border-border hover:border-primary/50 transition-all hover:shadow-lg flex flex-col">
-                <CardHeader className="text-center pb-2">
+              <Card className="relative overflow-hidden border-border bg-muted/10 flex flex-col">
+                <div className="absolute top-4 right-4 bg-muted-foreground text-white text-xs font-bold px-2 py-1 rounded-full z-10">
+                  Coming Soon
+                </div>
+                <CardHeader className="text-center pb-2 opacity-70">
                   <div className="text-sm font-medium text-muted-foreground mb-2">手軽に始めたい企業向け</div>
                   <CardTitle className="text-2xl font-bold">クラウドプラン</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-1">
-                    <span className="text-3xl font-bold">¥50,000</span>
+                    <span className="text-3xl font-bold">¥10,000</span>
                     <span className="text-muted-foreground">/月〜</span>
                   </div>
                   <CardDescription className="mt-2">
-                    初期費用 ¥100,000〜
+                    現在開発中・事前登録受付中
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-1 space-y-6 pt-6">
+                <CardContent className="flex-1 space-y-6 pt-6 opacity-70">
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-center">
-                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-muted-foreground mr-2 flex-shrink-0" />
                       <span>最短3営業日で利用開始</span>
                     </li>
                     <li className="flex items-center">
-                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-muted-foreground mr-2 flex-shrink-0" />
                       <span>サーバー管理・保守不要</span>
                     </li>
                     <li className="flex items-center">
-                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-muted-foreground mr-2 flex-shrink-0" />
                       <span>常に最新のAIモデルを利用可能</span>
                     </li>
                     <li className="flex items-center">
-                      <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <Check className="w-4 h-4 text-muted-foreground mr-2 flex-shrink-0" />
                       <span>セキュアなプライベートクラウド環境</span>
                     </li>
                   </ul>
                 </CardContent>
                 <div className="p-6 pt-0 mt-auto">
-                  <Button className="w-full" variant="outline">詳細を見る</Button>
+                  <Button className="w-full" variant="outline" disabled>準備中</Button>
                 </div>
               </Card>
 
               {/* On-Premise Plan */}
-              <Card className="relative overflow-hidden border-primary shadow-md flex flex-col transform md:-translate-y-4">
+              <Card className="relative overflow-hidden border-primary shadow-md flex flex-col transform md:-translate-y-4 bg-card">
                 <div className="absolute top-0 inset-x-0 h-1 bg-primary"></div>
                 <div className="absolute top-4 right-4 bg-primary text-primary-foreground text-xs font-bold px-2 py-1 rounded-full">
-                  人気
+                  受付中
                 </div>
                 <CardHeader className="text-center pb-2">
                   <div className="text-sm font-medium text-primary mb-2">セキュリティ重視の企業向け</div>
                   <CardTitle className="text-2xl font-bold">オンプレミスプラン</CardTitle>
                   <div className="mt-4 flex items-baseline justify-center gap-1">
                     <span className="text-3xl font-bold">¥1,000,000</span>
-                    <span className="text-muted-foreground">〜</span>
+                    <span className="text-muted-foreground">/年〜</span>
                   </div>
                   <CardDescription className="mt-2">
-                    個別お見積もり
+                    ハードウェア構成により変動
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="flex-1 space-y-6 pt-6">
@@ -537,6 +540,47 @@ export default function Home() {
                 ※ 価格は税抜表示です。ユーザー数やデータ量に応じて変動する場合があります。<br/>
                 ※ オンプレミスプランには、ハードウェア費用が含まれる場合があります。
               </p>
+            </div>
+
+            {/* SaaS Integration Option */}
+            <div className="mt-16 max-w-4xl mx-auto">
+              <div className="bg-background rounded-xl border border-border p-8 shadow-sm">
+                <div className="flex flex-col md:flex-row items-center gap-8">
+                  <div className="flex-1">
+                    <div className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-sm font-medium text-blue-700 mb-4">
+                      オプション機能
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">外部SaaS連携オプション</h3>
+                    <p className="text-muted-foreground mb-4">
+                      NotionやBacklogなどの外部ツールと連携し、タスク管理やドキュメント共有をシームレスに行えます。
+                      社内のあらゆる情報を「みえタス」に集約し、検索・活用することが可能です。
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-muted rounded-md text-xs font-medium">Notion</span>
+                      <span className="px-3 py-1 bg-muted rounded-md text-xs font-medium">Backlog</span>
+                      <span className="px-3 py-1 bg-muted rounded-md text-xs font-medium">Slack</span>
+                      <span className="px-3 py-1 bg-muted rounded-md text-xs font-medium">Teams</span>
+                      <span className="px-3 py-1 bg-muted rounded-md text-xs font-medium">Google Drive</span>
+                    </div>
+                  </div>
+                  <div className="w-full md:w-1/3 bg-muted/50 rounded-lg p-6 flex items-center justify-center border border-dashed border-border">
+                    <div className="text-center">
+                      <div className="flex justify-center -space-x-2 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center shadow-sm z-30">
+                          <img src="/images/logo-symbol-transparent.png" className="w-6 h-6" alt="Mietasu" />
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center shadow-sm z-20 text-xs font-bold text-slate-700">
+                          N
+                        </div>
+                        <div className="w-10 h-10 rounded-full bg-white border border-border flex items-center justify-center shadow-sm z-10 text-xs font-bold text-green-600">
+                          B
+                        </div>
+                      </div>
+                      <p className="text-sm font-medium">データ連携で<br/>さらに便利に</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

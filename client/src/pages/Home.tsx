@@ -70,11 +70,11 @@ export default function Home() {
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="/images/hero-bg.png" 
-              alt="Secure Data Flow Background" 
-              className="w-full h-full object-cover opacity-20"
+              src="/images/key-visual-mietasu.png" 
+              alt="Mietasu Key Visual" 
+              className="w-full h-full object-cover opacity-30"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/70 to-background"></div>
           </div>
           
           <div className="container relative z-10">
@@ -185,6 +185,27 @@ export default function Home() {
                   </div>
                 </motion.div>
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* Demo Video Section */}
+        <section className="py-12 container">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border group cursor-pointer">
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+            <img 
+              src="/images/demo-thumbnail.png" 
+              alt="Mietasu Demo Interface" 
+              className="w-full aspect-video object-cover"
+            />
+            <div className="absolute inset-0 flex items-center justify-center z-20">
+              <div className="w-20 h-20 bg-primary/90 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
+              </div>
+            </div>
+            <div className="absolute bottom-6 left-6 z-20 text-white">
+              <div className="font-bold text-lg drop-shadow-md">製品デモを見る</div>
+              <div className="text-sm opacity-90 drop-shadow-md">1分でわかる「みえタス」の操作感</div>
             </div>
           </div>
         </section>

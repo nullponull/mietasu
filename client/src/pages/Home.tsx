@@ -29,10 +29,12 @@ export default function Home() {
       {/* Navigation */}
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2 font-bold text-xl tracking-tighter text-primary">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground">
-              <Brain className="w-5 h-5" />
-            </div>
+          <div className="flex items-center gap-3 font-bold text-xl tracking-tighter text-primary">
+            <img 
+              src="/images/logo-symbol-transparent.png" 
+              alt="Mietasu Logo" 
+              className="w-9 h-9 object-contain"
+            />
             <span>みえタス</span>
           </div>
           

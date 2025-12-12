@@ -45,6 +45,7 @@ export default function Home() {
             <a href="#cases" className="transition-colors hover:text-primary">導入事例</a>
             <a href="#pricing" className="transition-colors hover:text-primary">料金プラン</a>
             <a href="#flow" className="transition-colors hover:text-primary">導入フロー</a>
+            <a href="#/demo" className="transition-colors hover:text-primary font-bold text-primary">デモ画面を見る</a>
             <Button variant="default" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
               お問い合わせ
             </Button>
@@ -99,11 +100,16 @@ export default function Home() {
                 <p className="text-lg md:text-xl text-muted-foreground max-w-[600px]">
                   会議も、ドキュメントも、チャットも。社内のあらゆる情報を、セキュアな環境で資産に変える。NotionやConfluenceでは実現できない、最高レベルのセキュリティと業務効率化を両立します。
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <div className="flex flex-wrap gap-4 pt-4">
                   <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20">
                     資料をダウンロード
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
+                  <a href="#/demo">
+                    <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5 text-primary bg-white/80 backdrop-blur-sm">
+                      デモ画面を見る
+                    </Button>
+                  </a>
                   <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5 text-primary">
                     お問い合わせ
                   </Button>

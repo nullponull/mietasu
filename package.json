@@ -2,6 +2,10 @@
   "name": "mietasu_lp_mockup",
   "version": "1.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
   "license": "MIT",
   "scripts": {
     "dev": "vite --host",

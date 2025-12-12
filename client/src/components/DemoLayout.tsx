@@ -59,12 +59,15 @@ const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title }) => {
         <nav className="p-4 space-y-1">
           {navItems.map((item) => (
             <Link key={item.path} href={item.path}>
-              <a className={`
-                flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
-                ${location === item.path 
-                  ? 'bg-blue-600 text-white' 
-                  : 'text-slate-400 hover:bg-slate-800 hover:text-white'}
-              `}>
+              <a 
+                className={`
+                  flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
+                  ${location === item.path 
+                    ? 'bg-blue-600 text-white' 
+                    : 'text-slate-400 hover:bg-slate-800 hover:text-white'}
+                `}
+                onClick={() => setSidebarOpen(false)}
+              >
                 {item.icon}
                 <span className="font-medium">{item.label}</span>
               </a>

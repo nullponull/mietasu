@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Shield, Mic, Brain, Search, Server, Lock, Database, ArrowRight, Menu, X } from "lucide-react";
 import { useState } from "react";
@@ -45,7 +46,7 @@ export default function Home() {
             <a href="#cases" className="transition-colors hover:text-primary">導入事例</a>
             <a href="#pricing" className="transition-colors hover:text-primary">料金プラン</a>
             <a href="#flow" className="transition-colors hover:text-primary">導入フロー</a>
-            <a href="#/demo" className="transition-colors hover:text-primary font-bold text-primary">デモ画面を見る</a>
+            <Link href="/demo" className="transition-colors hover:text-primary font-bold text-primary">デモ画面を見る</Link>
             <Button variant="default" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
               お問い合わせ
             </Button>
@@ -105,11 +106,11 @@ export default function Home() {
                     資料をダウンロード
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <a href="#/demo">
+                  <Link href="/demo">
                     <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5 text-primary bg-white/80 backdrop-blur-sm">
                       デモ画面を見る
                     </Button>
-                  </a>
+                  </Link>
                   <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5 text-primary">
                     お問い合わせ
                   </Button>

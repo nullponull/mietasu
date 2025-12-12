@@ -37,12 +37,22 @@ const Chat: React.FC = () => {
     setMessages([...messages, userMsg]);
     setInput('');
 
-    // Simulate bot response
+    // Simulate bot response with simple logic
     setTimeout(() => {
+      let responseContent = '申し訳ありません。これはデモ環境のため、実際のAI回答は生成されません。\n製品版では、社内のナレッジベース（議事録、ドキュメント、チャットログなど）を横断的に検索し、的確な回答を生成します。';
+      
+      if (input.includes('議事録') && input.includes('要約')) {
+        responseContent = '【最新の議事録要約：週次定例ミーティング (2024/04/12)】\n\n■ 決定事項\n1. SNS広告予算を月額80万円に増額（承認済）\n2. 新製品「Alpha」プレスリリースは4/25配信\n3. 開発チームは来週中にバグ修正を完了させる\n\n■ ネクストアクション\n・マーケティングチーム：インフルエンサー選定リストの作成\n・開発チーム：バグ修正の進捗報告（水曜日）';
+      } else if (input.includes('プロジェクトA') && input.includes('進捗')) {
+        responseContent = '【プロジェクトA 進捗状況】\n\n現在のステータス：順調 (On Track)\n\n・API実装：80%完了（予定通り）\n・フロントエンド実装：65%完了（若干の遅れあり）\n・QAテスト計画：策定完了\n\n来週の主なマイルストーンは「統合テストの開始」です。開発リソースの追加投入により、フロントエンドの遅れは解消される見込みです。';
+      } else if (input.includes('就業規則')) {
+        responseContent = '【就業規則検索結果】\n\n関連するドキュメント：「就業規則_2024改定版.pdf」「リモートワーク規定.pdf」\n\nご質問の意図に近いと思われる項目を抜粋します：\n\n第3章 勤務時間\n「所定労働時間は、休憩時間を除き1日8時間とする。始業時刻は午前9時、終業時刻は午後6時とする。ただし、フレックスタイム制適用者はこの限りではない。」\n\n詳細については、人事・総務フォルダ内のドキュメントをご確認ください。';
+      }
+
       const botMsg = {
         id: messages.length + 2,
         role: 'bot',
-        content: '申し訳ありません。これはデモ環境のため、実際のAI回答は生成されません。\n製品版では、社内のナレッジベース（議事録、ドキュメント、チャットログなど）を横断的に検索し、的確な回答を生成します。',
+        content: responseContent,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages(prev => [...prev, botMsg]);

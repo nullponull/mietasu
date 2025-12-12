@@ -8,9 +8,11 @@ import {
   MoreHorizontal
 } from 'lucide-react';
 
+import DemoLayout from '../../components/DemoLayout';
+
 const Dashboard: React.FC = () => {
   return (
-    <div>
+    <DemoLayout title="ダッシュボード">
       <div className="page-header">
         <h1 className="page-title">ダッシュボード</h1>
         <div className="page-actions">
@@ -164,7 +166,7 @@ const Dashboard: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </DemoLayout>
   );
 };
 

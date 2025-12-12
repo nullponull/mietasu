@@ -8,9 +8,11 @@ import {
   Plus
 } from 'lucide-react';
 
+import DemoLayout from '../../components/DemoLayout';
+
 const Knowledge: React.FC = () => {
   return (
-    <div>
+    <DemoLayout title="ナレッジベース">
       <div className="page-header">
         <h1 className="page-title">ナレッジベース</h1>
         <div className="page-actions">
@@ -140,7 +142,7 @@ const Knowledge: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </DemoLayout>
   );
 };
 

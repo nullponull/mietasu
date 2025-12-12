@@ -11,6 +11,8 @@ import {
   RefreshCw
 } from 'lucide-react';
 
+import DemoLayout from '../../components/DemoLayout';
+
 const Chat: React.FC = () => {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([
@@ -49,8 +51,9 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-140px)] flex flex-col bg-white rounded-lg border border-gray-200 overflow-hidden">
-      {/* Chat Header */}
+    <DemoLayout title="AIチャット">
+      <div className="h-[calc(100vh-140px)] flex flex-col bg-white rounded-lg border border-gray-200 overflow-hidden">
+        {/* Chat Header */}
       <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-white">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white">
@@ -162,7 +165,8 @@ const Chat: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>
+      </div>
+    </DemoLayout>
   );
 };
 

@@ -1,41 +1,24 @@
-import { Switch, Route } from "wouter";
-import Home from "./pages/Home";
-import DemoLayout from "./components/DemoLayout";
-import Dashboard from "./pages/demo/Dashboard";
-import Knowledge from "./pages/demo/Knowledge";
-import Minutes from "./pages/demo/Minutes";
-import Chat from "./pages/demo/Chat";
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Dashboard from './pages/demo/Dashboard';
+import Knowledge from './pages/demo/Knowledge';
+import Minutes from './pages/demo/Minutes';
+import Chat from './pages/demo/Chat';
+import Settings from './pages/demo/Settings';
 
 function App() {
   return (
-    <Switch>
-      <Route path="/" component={Home} />
-      
-      {/* Demo Routes */}
-      <Route path="/demo">
-        <DemoLayout>
-          <Dashboard />
-        </DemoLayout>
-      </Route>
-      <Route path="/demo/knowledge">
-        <DemoLayout>
-          <Knowledge />
-        </DemoLayout>
-      </Route>
-      <Route path="/demo/minutes">
-        <DemoLayout>
-          <Minutes />
-        </DemoLayout>
-      </Route>
-      <Route path="/demo/chat">
-        <DemoLayout>
-          <Chat />
-        </DemoLayout>
-      </Route>
-      
-      {/* Fallback */}
-      <Route>404 Page Not Found</Route>
-    </Switch>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/demo" element={<Dashboard />} />
+        <Route path="/demo/dashboard" element={<Dashboard />} />
+        <Route path="/demo/knowledge" element={<Knowledge />} />
+        <Route path="/demo/minutes" element={<Minutes />} />
+        <Route path="/demo/chat" element={<Chat />} />
+        <Route path="/demo/settings" element={<Settings />} />
+      </Routes>
+    </Router>
   );
 }
 

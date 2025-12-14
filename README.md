@@ -89,3 +89,24 @@ client/
 ## ライセンス
 
 MIT License
+
+## テスト (Playwright Agents)
+
+本プロジェクトでは、E2Eテストフレームワークとして Playwright を採用しており、Playwright Agents (Planner, Generator, Healer) に対応した構成になっています。
+
+### テストの実行
+
+以下のコマンドでテストを実行できます：
+
+```bash
+pnpm exec playwright test
+```
+
+### Playwright Agents のセットアップ
+
+`specs/` ディレクトリには、Playwright Agents がテストを生成するためのシナリオ（Markdown形式）が格納されています。
+
+*   `specs/basic-operations.md`: 基本的なナビゲーションや操作のシナリオ定義
+*   `tests/seed.spec.ts`: 環境初期化用のシードテスト
+
+Playwright Agents を活用する（VS Code拡張機能やCLIが必要）ことで、これらのMarkdown仕様書から自動的にテストコードを生成・保守することが可能です。

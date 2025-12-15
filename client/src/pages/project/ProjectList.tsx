@@ -128,13 +128,11 @@ export default function ProjectList() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>
-              <Link href={`/project/${project.id}`}>
-                <a className="block mt-2">
-                  <CardTitle className="text-xl group-hover:text-blue-600 transition-colors flex items-center gap-2">
-                    <Folder className="w-5 h-5 text-gray-400" />
-                    {project.name}
-                  </CardTitle>
-                </a>
+              <Link href={`/project/${project.id}`} className="block mt-2">
+                <CardTitle className="text-xl group-hover:text-blue-600 transition-colors flex items-center gap-2">
+                  <Folder className="w-5 h-5 text-gray-400" />
+                  {project.name}
+                </CardTitle>
               </Link>
             </CardHeader>
             <CardContent>

@@ -15,19 +15,19 @@ import {
 
 interface DemoLayoutProps {
   children: React.ReactNode;
-  title: string;
+  title?: string;
 }
 
-const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title }) => {
+const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title = "みえタス" }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [location] = useLocation();
 
   const navItems = [
-    { path: '/demo', label: 'ダッシュボード', icon: <LayoutDashboard size={20} /> },
-    { path: '/demo/knowledge', label: 'ナレッジベース', icon: <Database size={20} /> },
-    { path: '/demo/minutes', label: '議事録・録音', icon: <FileText size={20} /> },
-    { path: '/demo/chat', label: 'AIチャット', icon: <MessageSquare size={20} /> },
-    { path: '/demo/settings', label: '設定・ユーザー', icon: <Settings size={20} /> },
+    { path: '/dashboard', label: 'ダッシュボード', icon: <LayoutDashboard size={20} /> },
+    { path: '/project/1', label: 'プロジェクト (Demo)', icon: <Database size={20} /> },
+    { path: '/chat', label: 'チャット一覧', icon: <MessageSquare size={20} /> },
+    { path: '/upload', label: 'ファイルアップロード', icon: <FileText size={20} /> },
+    { path: '/admin', label: '管理者設定', icon: <Settings size={20} /> },
   ];
 
   return (
@@ -58,19 +58,19 @@ const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title }) => {
 
         <nav className="p-4 space-y-1">
           {navItems.map((item) => (
-            <Link key={item.path} href={item.path}>
-              <a 
-                className={`
-                  flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
-                  ${location === item.path 
-                    ? 'bg-blue-600 text-white' 
-                    : 'text-slate-400 hover:bg-slate-800 hover:text-white'}
-                `}
-                onClick={() => setSidebarOpen(false)}
-              >
-                {item.icon}
-                <span className="font-medium">{item.label}</span>
-              </a>
+            <Link 
+              key={item.path} 
+              href={item.path}
+              className={`
+                flex items-center gap-3 px-4 py-3 rounded-lg transition-colors
+                ${location === item.path 
+                  ? 'bg-blue-600 text-white' 
+                  : 'text-slate-400 hover:bg-slate-800 hover:text-white'}
+              `}
+              onClick={() => setSidebarOpen(false)}
+            >
+              {item.icon}
+              <span className="font-medium">{item.label}</span>
             </Link>
           ))}
         </nav>
@@ -84,10 +84,8 @@ const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title }) => {
               <p className="text-sm font-medium text-white truncate">管理者 ユーザー</p>
               <p className="text-xs truncate">admin@example.com</p>
             </div>
-            <Link href="/">
-              <a className="text-slate-400 hover:text-white" title="ログアウト">
-                <LogOut size={18} />
-              </a>
+            <Link href="/" className="text-slate-400 hover:text-white" title="ログアウト">
+              <LogOut size={18} />
             </Link>
           </div>
         </div>

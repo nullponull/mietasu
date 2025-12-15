@@ -46,7 +46,7 @@ export default function Home() {
             <a href="#cases" className="transition-colors hover:text-primary">導入事例</a>
             <a href="#pricing" className="transition-colors hover:text-primary">料金プラン</a>
             <a href="#flow" className="transition-colors hover:text-primary">導入フロー</a>
-            <Link href="/demo" className="transition-colors hover:text-primary font-bold text-primary">デモ画面を見る</Link>
+            <Link href="/dashboard" className="transition-colors hover:text-primary font-bold text-primary">デモ画面を見る</Link>
             <Button variant="default" size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
               お問い合わせ
             </Button>
@@ -106,7 +106,7 @@ export default function Home() {
                     資料をダウンロード
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
-                  <Link href="/demo">
+                  <Link href="/dashboard">
                     <Button size="lg" variant="outline" className="border-primary/20 hover:bg-primary/5 text-primary bg-white/80 backdrop-blur-sm">
                       デモ画面を見る
                     </Button>

@@ -51,9 +51,11 @@ export default function ProjectDetail() {
         </div>
         <div className="flex gap-2">
           <Link href={`/project/${projectId}/settings`}>
-            <Button variant="outline">
-              <Settings className="w-4 h-4 mr-2" />
-              設定
+            <Button variant="outline" asChild>
+              <span>
+                <Settings className="w-4 h-4 mr-2" />
+                設定
+              </span>
             </Button>
           </Link>
           <Button className="bg-blue-600 hover:bg-blue-700">
@@ -165,7 +167,9 @@ export default function ProjectDetail() {
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-lg font-medium">最新の議事録</CardTitle>
                 <Link href={`/project/${projectId}?tab=minutes`}>
-                  <Button variant="ghost" size="sm" className="text-xs">すべて見る</Button>
+                  <Button variant="ghost" size="sm" className="text-xs" asChild>
+                    <span>すべて見る</span>
+                  </Button>
                 </Link>
               </CardHeader>
               <CardContent>
@@ -187,7 +191,9 @@ export default function ProjectDetail() {
               <CardHeader className="flex flex-row items-center justify-between pb-2">
                 <CardTitle className="text-lg font-medium">最近更新された資料</CardTitle>
                 <Link href={`/project/${projectId}?tab=files`}>
-                  <Button variant="ghost" size="sm" className="text-xs">すべて見る</Button>
+                  <Button variant="ghost" size="sm" className="text-xs" asChild>
+                    <span>すべて見る</span>
+                  </Button>
                 </Link>
               </CardHeader>
               <CardContent>

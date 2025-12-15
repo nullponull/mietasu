@@ -236,7 +236,9 @@ export default function ProjectDetail() {
                       </div>
                       <p className="text-sm text-gray-600">{item.summary}</p>
                     </div>
-                    <Button variant="ghost" size="sm">詳細を見る</Button>
+                    <Button variant="ghost" size="sm" asChild>
+                      <span>詳細を見る</span>
+                    </Button>
                   </Link>
                 ))}
               </div>

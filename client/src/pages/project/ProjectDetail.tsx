@@ -171,14 +171,12 @@ export default function ProjectDetail() {
               <CardContent>
                 <div className="space-y-4">
                   {minutes.slice(0, 3).map((item) => (
-                    <Link key={item.id} href={`/project/${projectId}/meeting/${item.id}`}>
-                      <div className="block p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
-                        <div className="flex justify-between items-start mb-1">
-                          <h4 className="font-bold text-gray-800 text-sm">{item.title}</h4>
-                          <span className="text-xs text-gray-500">{item.date}</span>
-                        </div>
-                        <p className="text-xs text-gray-500 line-clamp-2">{item.summary}</p>
+                    <Link key={item.id} href={`/project/${projectId}/meeting/${item.id}`} className="block p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
+                      <div className="flex justify-between items-start mb-1">
+                        <h4 className="font-bold text-gray-800 text-sm">{item.title}</h4>
+                        <span className="text-xs text-gray-500">{item.date}</span>
                       </div>
+                      <p className="text-xs text-gray-500 line-clamp-2">{item.summary}</p>
                     </Link>
                   ))}
                 </div>
@@ -195,19 +193,17 @@ export default function ProjectDetail() {
               <CardContent>
                 <div className="space-y-4">
                   {files.slice(0, 3).map((file) => (
-                    <Link key={file.id} href={`/project/${projectId}/file/${file.id}`}>
-                      <div className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
-                        <div className="flex items-center gap-3">
-                          <div className="bg-gray-100 p-2 rounded">
-                            <File className="w-4 h-4 text-gray-600" />
-                          </div>
-                          <div>
-                            <h4 className="font-bold text-gray-800 text-sm">{file.name}</h4>
-                            <p className="text-xs text-gray-500">{file.size} • {file.updated}</p>
-                          </div>
+                    <Link key={file.id} href={`/project/${projectId}/file/${file.id}`} className="flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer border border-transparent hover:border-gray-200">
+                      <div className="flex items-center gap-3">
+                        <div className="bg-gray-100 p-2 rounded">
+                          <File className="w-4 h-4 text-gray-600" />
                         </div>
-                        <ArrowRight className="w-4 h-4 text-gray-300" />
+                        <div>
+                          <h4 className="font-bold text-gray-800 text-sm">{file.name}</h4>
+                          <p className="text-xs text-gray-500">{file.size} • {file.updated}</p>
+                        </div>
                       </div>
+                      <ArrowRight className="w-4 h-4 text-gray-300" />
                     </Link>
                   ))}
                 </div>
@@ -226,17 +222,15 @@ export default function ProjectDetail() {
             <CardContent>
               <div className="space-y-4">
                 {minutes.map((item) => (
-                  <Link key={item.id} href={`/project/${projectId}/meeting/${item.id}`}>
-                    <div className="flex flex-col md:flex-row md:items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer gap-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-bold text-gray-800">{item.title}</h3>
-                          <Badge variant="outline">{item.date}</Badge>
-                        </div>
-                        <p className="text-sm text-gray-600">{item.summary}</p>
+                  <Link key={item.id} href={`/project/${projectId}/meeting/${item.id}`} className="flex flex-col md:flex-row md:items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors cursor-pointer gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="font-bold text-gray-800">{item.title}</h3>
+                        <Badge variant="outline">{item.date}</Badge>
                       </div>
-                      <Button variant="ghost" size="sm">詳細を見る</Button>
+                      <p className="text-sm text-gray-600">{item.summary}</p>
                     </div>
+                    <Button variant="ghost" size="sm">詳細を見る</Button>
                   </Link>
                 ))}
               </div>
@@ -260,16 +254,14 @@ export default function ProjectDetail() {
                   <div className="col-span-2">更新日</div>
                 </div>
                 {files.map((file) => (
-                  <Link key={file.id} href={`/project/${projectId}/file/${file.id}`}>
-                    <div className="grid grid-cols-12 gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer items-center">
-                      <div className="col-span-6 flex items-center gap-3">
-                        <File className="w-4 h-4 text-gray-400" />
-                        <span className="font-medium text-gray-800">{file.name}</span>
-                      </div>
-                      <div className="col-span-2 text-sm text-gray-500">{file.type}</div>
-                      <div className="col-span-2 text-sm text-gray-500">{file.size}</div>
-                      <div className="col-span-2 text-sm text-gray-500">{file.updated}</div>
+                  <Link key={file.id} href={`/project/${projectId}/file/${file.id}`} className="grid grid-cols-12 gap-4 p-3 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer items-center">
+                    <div className="col-span-6 flex items-center gap-3">
+                      <File className="w-4 h-4 text-gray-400" />
+                      <span className="font-medium text-gray-800">{file.name}</span>
                     </div>
+                    <div className="col-span-2 text-sm text-gray-500">{file.type}</div>
+                    <div className="col-span-2 text-sm text-gray-500">{file.size}</div>
+                    <div className="col-span-2 text-sm text-gray-500">{file.updated}</div>
                   </Link>
                 ))}
               </div>

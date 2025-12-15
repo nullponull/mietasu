@@ -145,19 +145,17 @@ export default function MainDashboard() {
             <CardTitle className="text-lg font-medium">クイック設定</CardTitle>
           </CardHeader>
           <CardContent>
-            <Link href="/settings">
-              <div className="p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors flex items-center justify-between group">
-                <div className="flex items-center gap-3">
-                  <div className="bg-gray-100 p-2 rounded-full group-hover:bg-gray-200 transition-colors">
-                    <User className="w-5 h-5 text-gray-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-gray-800">個人設定</h3>
-                    <p className="text-xs text-gray-500">プロフィール・通知・表示設定</p>
-                  </div>
+            <Link href="/settings" className="block p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors flex items-center justify-between group">
+              <div className="flex items-center gap-3">
+                <div className="bg-gray-100 p-2 rounded-full group-hover:bg-gray-200 transition-colors">
+                  <User className="w-5 h-5 text-gray-600" />
                 </div>
-                <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                <div>
+                  <h3 className="font-bold text-gray-800">個人設定</h3>
+                  <p className="text-xs text-gray-500">プロフィール・通知・表示設定</p>
+                </div>
               </div>
+              <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-500 transition-colors" />
             </Link>
           </CardContent>
         </Card>

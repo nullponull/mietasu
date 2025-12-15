@@ -2,19 +2,39 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Upload, File, X, FileText, Mic } from "lucide-react";
-import { useState } from "react";
+import { Upload, File, X, FileText, Mic, CloudUpload } from "lucide-react";
+import { useState, useRef } from "react";
 import { useLocation } from "wouter";
 
 export default function FileUpload() {
   const [, setLocation] = useLocation();
-  const [files, setFiles] = useState<string[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
   const [uploadType, setUploadType] = useState<"minutes" | "files">("minutes");
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFiles([...files, ...Array.from(e.target.files)]);
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
-    const newFile = uploadType === "minutes" ? "meeting_audio_20240315.mp3" : "project_spec_v2.pdf";
-    setFiles([...files, newFile]);
+    setIsDragging(false);
+    if (e.dataTransfer.files) {
+      setFiles([...files, ...Array.from(e.dataTransfer.files)]);
+    }
   };
 
   return (
@@ -62,16 +82,34 @@ export default function FileUpload() {
               </div>
 
               <div 
-                className="border-2 border-dashed border-blue-200 bg-blue-50/30 rounded-lg p-12 text-center hover:bg-blue-50 transition-colors cursor-pointer"
-                onDragOver={(e) => e.preventDefault()}
+                className={`border-2 border-dashed rounded-lg p-12 text-center transition-all cursor-pointer ${
+                  isDragging 
+                    ? "border-blue-500 bg-blue-50 scale-[1.02]" 
+                    : "border-blue-200 bg-blue-50/30 hover:bg-blue-50"
+                }`}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
               >
+                <input 
+                  type="file" 
+                  className="hidden" 
+                  ref={fileInputRef}
+                  multiple 
+                  accept=".mp3,.wav,.m4a,.mp4"
+                  onChange={handleFileChange}
+                />
                 <div className="flex flex-col items-center gap-4">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                    <Mic className="w-8 h-8" />
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors ${
+                    isDragging ? "bg-blue-200 text-blue-700" : "bg-blue-100 text-blue-600"
+                  }`}>
+                    {isDragging ? <CloudUpload className="w-8 h-8 animate-bounce" /> : <Mic className="w-8 h-8" />}
                   </div>
                   <div>
-                    <p className="text-lg font-medium text-gray-700">音声・動画ファイルをドラッグ＆ドロップ</p>
+                    <p className="text-lg font-medium text-gray-700">
+                      {isDragging ? "ここにファイルをドロップ" : "音声・動画ファイルをドラッグ＆ドロップ"}
+                    </p>
                     <p className="text-sm text-gray-500 mt-1">対応形式: mp3, wav, m4a, mp4 (最大 500MB)</p>
                   </div>
                   <Button variant="outline" className="mt-2">ファイルを選択</Button>
@@ -105,16 +143,34 @@ export default function FileUpload() {
               </div>
 
               <div 
-                className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center hover:bg-gray-50 transition-colors cursor-pointer"
-                onDragOver={(e) => e.preventDefault()}
+                className={`border-2 border-dashed rounded-lg p-12 text-center transition-all cursor-pointer ${
+                  isDragging 
+                    ? "border-blue-500 bg-blue-50 scale-[1.02]" 
+                    : "border-gray-300 hover:bg-gray-50"
+                }`}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
               >
+                <input 
+                  type="file" 
+                  className="hidden" 
+                  ref={fileInputRef}
+                  multiple 
+                  accept=".pdf,.docx,.xlsx,.pptx,.txt,.md,.jpg,.png"
+                  onChange={handleFileChange}
+                />
                 <div className="flex flex-col items-center gap-4">
-                  <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center text-gray-600">
-                    <Upload className="w-8 h-8" />
+                  <div className={`w-16 h-16 rounded-full flex items-center justify-center transition-colors ${
+                    isDragging ? "bg-blue-200 text-blue-700" : "bg-gray-100 text-gray-600"
+                  }`}>
+                    {isDragging ? <CloudUpload className="w-8 h-8 animate-bounce" /> : <Upload className="w-8 h-8" />}
                   </div>
                   <div>
-                    <p className="text-lg font-medium text-gray-700">ファイルをドラッグ＆ドロップ</p>
+                    <p className="text-lg font-medium text-gray-700">
+                      {isDragging ? "ここにファイルをドロップ" : "ファイルをドラッグ＆ドロップ"}
+                    </p>
                     <p className="text-sm text-gray-500 mt-1">対応形式: pdf, docx, xlsx, pptx, txt, md</p>
                   </div>
                   <Button variant="outline" className="mt-2">ファイルを選択</Button>
@@ -138,7 +194,10 @@ export default function FileUpload() {
                     ) : (
                       <FileText className="w-4 h-4 text-gray-500" />
                     )}
-                    <span className="text-sm">{file}</span>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-medium">{file.name}</span>
+                      <span className="text-xs text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</span>
+                    </div>
                   </div>
                   <button onClick={() => setFiles(files.filter((_, idx) => idx !== i))}>
                     <X className="w-4 h-4 text-gray-400 hover:text-red-500" />

@@ -4,11 +4,22 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Bell, Lock, User, Palette } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function IndividualSettings() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold text-gray-800">個人設定</h1>
+      <h1 className="text-3xl font-bold text-gray-800 dark:text-white">個人設定</h1>
       
       <div className="grid gap-6">
         {/* Profile Settings */}
@@ -82,7 +93,7 @@ export default function IndividualSettings() {
                 <Label>ダークモード</Label>
                 <p className="text-sm text-gray-500">画面を暗い配色に切り替えます</p>
               </div>
-              <Switch />
+              <Switch checked={darkMode} onCheckedChange={setDarkMode} />
             </div>
           </CardContent>
         </Card>

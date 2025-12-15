@@ -2,10 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ArrowLeft, Download, Share2, Clock, Calendar, PlayCircle } from "lucide-react";
+import { ArrowLeft, Download, Share2, Clock, Calendar, Play, Pause, RotateCcw, RotateCw, Volume2 } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
 
 export default function MeetingDetail() {
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
@@ -36,6 +39,44 @@ export default function MeetingDetail() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
+          {/* Audio Player */}
+          <Card className="bg-white border p-4 flex items-center gap-4 shadow-sm sticky top-4 z-10">
+            <Button 
+              size="icon" 
+              className="rounded-full w-12 h-12 bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-transform active:scale-95"
+              onClick={() => setIsPlaying(!isPlaying)}
+            >
+              {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
+            </Button>
+            <div className="flex-1 space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-mono font-medium text-blue-600">15:30</span>
+                <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden cursor-pointer hover:bg-gray-200 transition-colors relative group">
+                  <div className="h-full w-[34%] bg-blue-500 relative">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white border-2 border-blue-500 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </div>
+                </div>
+                <span className="text-xs font-mono text-gray-400">45:00</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <div className="flex gap-2">
+                  <Button variant="ghost" size="sm" className="h-6 text-xs text-gray-500 hover:text-blue-600">
+                    <RotateCcw className="w-3 h-3 mr-1" /> 10秒
+                  </Button>
+                  <Button variant="ghost" size="sm" className="h-6 text-xs text-gray-500 hover:text-blue-600">
+                    30秒 <RotateCw className="w-3 h-3 ml-1" />
+                  </Button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Volume2 className="w-4 h-4 text-gray-400" />
+                  <div className="w-20 h-1 bg-gray-200 rounded-full">
+                    <div className="w-3/4 h-full bg-gray-400 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Card>
+
           {/* AI Summary */}
           <Card className="bg-blue-50/50 border-blue-100">
             <CardHeader>
@@ -67,22 +108,16 @@ export default function MeetingDetail() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>文字起こし</CardTitle>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm">
-                  <PlayCircle className="w-4 h-4 mr-2" />
-                  音声を再生
-                </Button>
-              </div>
             </CardHeader>
             <CardContent className="space-y-6">
               {[
                 { time: "00:00", speaker: "田中", text: "それでは定例会議を始めます。まずは進捗確認からお願いします。" },
-                { time: "00:15", speaker: "佐藤", text: "APIの実装状況ですが、現在80%程度完了しています。認証周りの設計で少し議論が必要です。" },
+                { time: "00:15", speaker: "佐藤", text: "APIの実装状況ですが、現在80%程度完了しています。認証周りの設計で少し議論が必要です。", active: true },
                 { time: "01:20", speaker: "鈴木", text: "フロントエンド側もAPI待ちの状態ですね。モックアップでの開発は進めています。" },
                 { time: "02:45", speaker: "田中", text: "認証についてはAuth0を使う方向で進めましょう。PoC環境を私が用意します。" },
               ].map((log, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="min-w-[60px] text-sm text-gray-400 pt-1">{log.time}</div>
+                <div key={i} className={`flex gap-4 p-3 rounded-lg transition-colors ${log.active ? "bg-blue-50 border border-blue-100" : "hover:bg-gray-50"}`}>
+                  <div className="min-w-[60px] text-sm text-gray-400 pt-1 font-mono">{log.time}</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <Avatar className="w-6 h-6">

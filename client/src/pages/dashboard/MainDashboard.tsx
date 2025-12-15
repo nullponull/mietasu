@@ -44,15 +44,16 @@ export default function MainDashboard() {
           <CardContent>
             <div className="space-y-4">
               {[
-                { date: "2024-03-15", title: "システムメンテナンスのお知らせ", type: "重要" },
-                { date: "2024-03-14", title: "新機能「AI要約プロ」がリリースされました", type: "News" },
-                { date: "2024-03-10", title: "プロジェクトAの権限が変更されました", type: "通知" },
+                { date: "2024-03-15 14:30", title: "「次世代基盤開発」に新しい議事録が追加されました", type: "更新" },
+                { date: "2024-03-15 11:20", title: "「マーケティング施策2024」のファイル「Q1計画書.pdf」が更新されました", type: "更新" },
+                { date: "2024-03-14 18:00", title: "「社内DX推進」のメンバーに田中さんが追加されました", type: "通知" },
+                { date: "2024-03-14 09:15", title: "「次世代基盤開発」のAI要約が完了しました", type: "完了" },
               ].map((item, i) => (
                 <div key={i} className="flex items-start gap-4 p-3 hover:bg-gray-50 rounded-lg transition-colors border-b last:border-0">
                   <div className="min-w-[100px] text-sm text-gray-500">{item.date}</div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <Badge variant={item.type === "重要" ? "destructive" : "secondary"} className="text-xs">
+                      <Badge variant={item.type === "更新" ? "default" : item.type === "完了" ? "outline" : "secondary"} className="text-xs">
                         {item.type}
                       </Badge>
                       <span className="font-medium text-gray-900">{item.title}</span>

@@ -20,7 +20,7 @@ export default function ChatList() {
           { project: "マーケティング施策2024", topic: "LPデザイン案", lastMsg: "B案の方向性で進めましょう。", time: "1時間前", unread: 0 },
           { project: "社内DX推進", topic: "ツール導入検討", lastMsg: "来週の定例でデモを行います。", time: "昨日", unread: 0 },
         ].map((chat, i) => (
-          <Card key={i} className="hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLocation("/demo/chat")}>
+          <Card key={i} className="hover:shadow-md transition-shadow cursor-pointer" onClick={() => setLocation(`/chat/${i + 1}`)}>
             <CardContent className="p-6 flex items-center justify-between">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 shrink-0">

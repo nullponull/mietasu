@@ -12,12 +12,14 @@ import Login from "@/pages/auth/Login";
 import MainDashboard from "@/pages/dashboard/MainDashboard";
 import AdminDashboard from "@/pages/admin/AdminDashboard";
 import ChatList from "@/pages/chat/ChatList";
+import ChatDetail from "@/pages/chat/ChatDetail";
 import FileUpload from "@/pages/upload/FileUpload";
 import ProjectDetail from "@/pages/project/ProjectDetail";
 import ProjectList from "@/pages/project/ProjectList";
 import MeetingDetail from "@/pages/project/MeetingDetail";
 import FileDetail from "@/pages/project/FileDetail";
 import IndividualSettings from "@/pages/settings/IndividualSettings";
+import SearchResults from "@/pages/search/SearchResults";
 
 // Legacy Demo Pages
 import Dashboard from "./pages/demo/Dashboard";
@@ -48,6 +50,11 @@ function Router() {
           <ChatList />
         </DemoLayout>
       </Route>
+      <Route path="/chat/:id">
+        <DemoLayout>
+          <ChatDetail />
+        </DemoLayout>
+      </Route>
       <Route path="/upload">
         <DemoLayout>
           <FileUpload />
@@ -76,6 +83,11 @@ function Router() {
       <Route path="/settings">
         <DemoLayout>
           <IndividualSettings />
+        </DemoLayout>
+      </Route>
+      <Route path="/search">
+        <DemoLayout>
+          <SearchResults />
         </DemoLayout>
       </Route>
 

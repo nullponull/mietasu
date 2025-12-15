@@ -11,54 +11,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { projects } from "@/lib/mockData";
 
 export default function ProjectList() {
   const [filterStatus, setFilterStatus] = useState<"all" | "active" | "archived">("active");
 
-  const projects = [
-    {
-      id: 1,
-      name: "次世代基盤開発",
-      description: "クラウドネイティブな新基盤システムの設計と実装",
-      members: 12,
-      updated: "2時間前",
-      status: "進行中",
-      role: "管理者"
-    },
-    {
-      id: 2,
-      name: "マーケティング施策2024",
-      description: "Q1-Q4のマーケティングキャンペーン計画",
-      members: 8,
-      updated: "1日前",
-      status: "進行中",
-      role: "編集者"
-    },
-    {
-      id: 3,
-      name: "社内DX推進",
-      description: "業務フローのデジタル化と効率化プロジェクト",
-      members: 5,
-      updated: "3日前",
-      status: "検討中",
-      role: "閲覧者"
-    },
-    {
-      id: 4,
-      name: "セキュリティ監査対応",
-      description: "ISMS認証更新に向けた監査対応タスク",
-      members: 4,
-      updated: "1週間前",
-      status: "完了",
-      role: "管理者",
-      isArchived: true
-    }
-  ];
-
-  // Add isArchived property to other projects for consistency
-  const projectsWithStatus = projects.map(p => ({ ...p, isArchived: p.id === 4 }));
-
-  const filteredProjects = projectsWithStatus.filter(p => {
+  const filteredProjects = projects.filter(p => {
     if (filterStatus === "all") return true;
     if (filterStatus === "active") return !p.isArchived;
     if (filterStatus === "archived") return p.isArchived;

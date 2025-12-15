@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Plus, Bell, User, StickyNote, X, MessageSquare, ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { Link } from "wouter";
+import { projects } from "@/lib/mockData";
 
 export default function MainDashboard() {
   const [notes, setNotes] = useState([
@@ -129,11 +130,11 @@ export default function MainDashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {["次世代基盤開発", "マーケティング施策2024", "社内DX推進"].map((project, i) => (
-                <div key={i} className="p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
-                  <h3 className="font-bold text-gray-800 mb-2">{project}</h3>
-                  <p className="text-sm text-gray-500">最終更新: 2時間前</p>
-                </div>
+              {projects.slice(0, 4).map((project) => (
+                <Link key={project.id} href={`/project/${project.id}`} className="block p-4 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                  <h3 className="font-bold text-gray-800 mb-2">{project.name}</h3>
+                  <p className="text-sm text-gray-500">最終更新: {project.updated}</p>
+                </Link>
               ))}
             </div>
           </CardContent>

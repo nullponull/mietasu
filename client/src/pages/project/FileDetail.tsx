@@ -41,13 +41,66 @@ export default function FileDetail() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          {/* File Preview Placeholder */}
-          <Card className="h-[600px] bg-gray-100 flex items-center justify-center border-2 border-dashed">
-            <div className="text-center text-gray-500">
-              <Eye className="w-12 h-12 mx-auto mb-4 opacity-50" />
-              <p className="text-lg font-medium">プレビューを表示できません</p>
-              <p className="text-sm">このファイル形式はプレビューに対応していません</p>
-              <Button variant="link" className="mt-2">ダウンロードして確認</Button>
+          {/* File Preview */}
+          <Card className="h-[600px] bg-gray-100 flex flex-col overflow-hidden border">
+            <div className="bg-gray-800 text-white p-2 flex justify-between items-center text-sm px-4">
+              <span>Page 1 / 15</span>
+              <div className="flex gap-2">
+                <Button variant="ghost" size="icon" className="h-6 w-6 text-white hover:bg-gray-700">-</Button>
+                <Button variant="ghost" size="icon" className="h-6 w-6 text-white hover:bg-gray-700">+</Button>
+              </div>
+            </div>
+            <div className="flex-1 overflow-auto p-8 flex justify-center bg-gray-200">
+              <div className="bg-white shadow-lg w-full max-w-[800px] min-h-[800px] p-12 space-y-6">
+                <div className="border-b pb-4 mb-8">
+                  <h1 className="text-3xl font-bold text-gray-900">API仕様書 v2.0</h1>
+                  <p className="text-gray-500 mt-2">2024年12月14日 更新</p>
+                </div>
+                
+                <div className="space-y-4">
+                  <h2 className="text-xl font-bold text-gray-800 border-l-4 border-blue-500 pl-3">1. 概要</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    本ドキュメントは、次世代基盤システムにおける外部連携APIの仕様を定義するものである。
+                    RESTful APIの原則に基づき、JSON形式でのデータ交換を行う。
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h2 className="text-xl font-bold text-gray-800 border-l-4 border-blue-500 pl-3">2. 認証</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    すべてのAPIリクエストには、AuthorizationヘッダーにBearerトークンを含める必要がある。
+                    トークンはAuth0によって発行されたJWTを使用する。
+                  </p>
+                  <div className="bg-gray-50 p-4 rounded border font-mono text-sm">
+                    Authorization: Bearer &lt;token&gt;
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h2 className="text-xl font-bold text-gray-800 border-l-4 border-blue-500 pl-3">3. エンドポイント一覧</h2>
+                  <table className="w-full text-sm text-left border-collapse">
+                    <thead>
+                      <tr className="bg-gray-100">
+                        <th className="border p-2">Method</th>
+                        <th className="border p-2">Path</th>
+                        <th className="border p-2">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="border p-2 font-mono text-blue-600">GET</td>
+                        <td className="border p-2 font-mono">/api/v1/projects</td>
+                        <td className="border p-2">プロジェクト一覧を取得</td>
+                      </tr>
+                      <tr>
+                        <td className="border p-2 font-mono text-green-600">POST</td>
+                        <td className="border p-2 font-mono">/api/v1/projects</td>
+                        <td className="border p-2">プロジェクトを新規作成</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </Card>
 

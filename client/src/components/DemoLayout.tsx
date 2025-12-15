@@ -11,8 +11,17 @@ import {
   LogOut,
   Bell,
   Search,
-  User
+  User,
+  Check
 } from 'lucide-react';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface DemoLayoutProps {
   children: React.ReactNode;
@@ -120,10 +129,40 @@ const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title = "みえタス
                 }
               }}
             />
-          </div>          <button className="relative text-gray-500 hover:text-gray-700">
-              <Bell size={20} />
-              <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
-            </button>
+          </div>          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="relative text-gray-500 hover:text-gray-700 outline-none">
+                <Bell size={20} />
+                <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-80">
+              <DropdownMenuLabel>通知</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <div className="max-h-[300px] overflow-y-auto">
+                {[
+                  { title: "新しい議事録が追加されました", desc: "次世代基盤開発 / 定例進捗会議 #13", time: "10分前", unread: true },
+                  { title: "メンションされました", desc: "田中: @管理者 資料の確認をお願いします", time: "1時間前", unread: true },
+                  { title: "AI要約が完了しました", desc: "マーケティング施策2024 / キックオフMTG", time: "3時間前", unread: false },
+                ].map((notification, i) => (
+                  <DropdownMenuItem key={i} className="flex flex-col items-start p-3 cursor-pointer">
+                    <div className="flex justify-between w-full mb-1">
+                      <span className={`font-medium text-sm ${notification.unread ? "text-blue-600" : "text-gray-700"}`}>
+                        {notification.title}
+                      </span>
+                      {notification.unread && <span className="w-2 h-2 bg-blue-500 rounded-full" />}
+                    </div>
+                    <p className="text-xs text-gray-500 mb-1 line-clamp-1">{notification.desc}</p>
+                    <span className="text-[10px] text-gray-400">{notification.time}</span>
+                  </DropdownMenuItem>
+                ))}
+              </div>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="justify-center text-blue-600 cursor-pointer">
+                すべての通知を見る
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           </div>
         </header>
 

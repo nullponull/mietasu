@@ -2,20 +2,24 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Plus, Bell, User } from "lucide-react";
+import { Plus, Bell, User, StickyNote, X, MessageSquare } from "lucide-react";
 import { useState } from "react";
 
 export default function MainDashboard() {
   const [notes, setNotes] = useState([
-    { id: 1, content: "A社との定例会議の議事録を確認する", color: "bg-yellow-100" },
-    { id: 2, content: "新規プロジェクトのメンバーアサイン案を作成", color: "bg-blue-100" },
+    { id: 1, content: "次回の定例\n12/20 14:00〜\n場所: 会議室A\n※資料準備必須", color: "bg-yellow-50 border-yellow-200", rotate: "rotate-1" },
+    { id: 2, content: "TODO\n・API仕様書の確認\n・デザインレビュー\n・週報の提出", color: "bg-blue-50 border-blue-200", rotate: "-rotate-1" },
+    { id: 3, content: "チャット引用\n\"認証基盤はAuth0を採用する方向で...\"\n- 田中 (昨日)", color: "bg-pink-50 border-pink-200", rotate: "rotate-2", type: "quote" },
   ]);
 
   const [newNote, setNewNote] = useState("");
 
   const addNote = () => {
     if (!newNote.trim()) return;
-    setNotes([...notes, { id: Date.now(), content: newNote, color: "bg-yellow-100" }]);
+    const colors = ["bg-yellow-50 border-yellow-200", "bg-blue-50 border-blue-200", "bg-green-50 border-green-200"];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const randomRotate = `rotate-${Math.floor(Math.random() * 3) - 1}`;
+    setNotes([...notes, { id: Date.now(), content: newNote, color: randomColor, rotate: randomRotate }]);
     setNewNote("");
   };
 
@@ -67,12 +71,20 @@ export default function MainDashboard() {
 
         {/* Sticky Notes */}
         <Card className="md:col-span-1 row-span-2 bg-gray-50/50">
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg font-medium">付箋メモ</CardTitle>
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-lg font-medium flex items-center gap-2">
+              <StickyNote className="w-5 h-5 text-yellow-500" />
+              付箋メモ
+            </CardTitle>
+            <Button variant="ghost" size="sm" className="text-xs text-gray-500" onClick={() => document.getElementById('note-input')?.focus()}>
+              <Plus className="w-3 h-3 mr-1" />
+              追加
+            </Button>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex gap-2">
               <Textarea 
+                id="note-input"
                 placeholder="新しいメモ..." 
                 value={newNote}
                 onChange={(e) => setNewNote(e.target.value)}
@@ -82,16 +94,27 @@ export default function MainDashboard() {
                 <Plus className="w-4 h-4" />
               </Button>
             </div>
-            <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
+            <div className="grid grid-cols-1 gap-4 max-h-[500px] overflow-y-auto pr-2 pt-2">
               {notes.map((note) => (
-                <div key={note.id} className={`${note.color} p-4 rounded-lg shadow-sm border border-black/5 relative group`}>
-                  <p className="text-sm text-gray-800 whitespace-pre-wrap">{note.content}</p>
-                  <button 
-                    onClick={() => setNotes(notes.filter(n => n.id !== note.id))}
-                    className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 text-gray-500 hover:text-red-500 transition-opacity"
-                  >
-                    ×
-                  </button>
+                <div 
+                  key={note.id} 
+                  className={`${note.color} p-4 rounded-lg shadow-sm border ${note.rotate} hover:rotate-0 transition-transform cursor-pointer group relative`}
+                >
+                  <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button 
+                      onClick={() => setNotes(notes.filter(n => n.id !== note.id))}
+                      className="text-gray-400 hover:text-red-500"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </div>
+                  {note.type === "quote" && (
+                    <div className="flex items-center gap-1 mb-2 text-pink-600">
+                      <MessageSquare className="w-3 h-3" />
+                      <span className="text-xs font-bold">チャット引用</span>
+                    </div>
+                  )}
+                  <p className="text-sm text-gray-800 whitespace-pre-wrap leading-relaxed font-medium">{note.content}</p>
                 </div>
               ))}
             </div>

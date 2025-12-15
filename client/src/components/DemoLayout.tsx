@@ -10,7 +10,8 @@ import {
   X,
   LogOut,
   Bell,
-  Search
+  Search,
+  User
 } from 'lucide-react';
 
 interface DemoLayoutProps {
@@ -24,9 +25,10 @@ const DemoLayout: React.FC<DemoLayoutProps> = ({ children, title = "みえタス
 
   const navItems = [
     { path: '/dashboard', label: 'ダッシュボード', icon: <LayoutDashboard size={20} /> },
-    { path: '/project/1', label: 'プロジェクト (Demo)', icon: <Database size={20} /> },
+    { path: '/projects', label: 'プロジェクト一覧', icon: <Database size={20} /> },
     { path: '/chat', label: 'チャット一覧', icon: <MessageSquare size={20} /> },
     { path: '/upload', label: 'ファイルアップロード', icon: <FileText size={20} /> },
+    { path: '/settings', label: '個人設定', icon: <User size={20} /> },
     { path: '/admin', label: '管理者設定', icon: <Settings size={20} /> },
   ];
 

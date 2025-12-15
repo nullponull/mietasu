@@ -14,6 +14,10 @@ import AdminDashboard from "@/pages/admin/AdminDashboard";
 import ChatList from "@/pages/chat/ChatList";
 import FileUpload from "@/pages/upload/FileUpload";
 import ProjectDetail from "@/pages/project/ProjectDetail";
+import ProjectList from "@/pages/project/ProjectList";
+import MeetingDetail from "@/pages/project/MeetingDetail";
+import FileDetail from "@/pages/project/FileDetail";
+import IndividualSettings from "@/pages/settings/IndividualSettings";
 
 // Legacy Demo Pages
 import Dashboard from "./pages/demo/Dashboard";
@@ -49,9 +53,29 @@ function Router() {
           <FileUpload />
         </DemoLayout>
       </Route>
+      <Route path="/projects">
+        <DemoLayout>
+          <ProjectList />
+        </DemoLayout>
+      </Route>
       <Route path="/project/:id">
         <DemoLayout>
           <ProjectDetail />
+        </DemoLayout>
+      </Route>
+      <Route path="/project/:id/meeting/:mid">
+        <DemoLayout>
+          <MeetingDetail />
+        </DemoLayout>
+      </Route>
+      <Route path="/project/:id/file/:fid">
+        <DemoLayout>
+          <FileDetail />
+        </DemoLayout>
+      </Route>
+      <Route path="/settings">
+        <DemoLayout>
+          <IndividualSettings />
         </DemoLayout>
       </Route>
 

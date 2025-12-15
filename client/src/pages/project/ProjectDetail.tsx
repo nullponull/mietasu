@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Settings, FileText, File, MessageSquare, Users, Clock, ArrowRight, Plus } from "lucide-react";
+import { Settings, FileText, File, MessageSquare, Users, Clock, ArrowRight, Plus, Activity } from "lucide-react";
 import { Link, useRoute } from "wouter";
 
 export default function ProjectDetail() {
@@ -29,6 +29,13 @@ export default function ProjectDetail() {
     { id: 1, name: "API仕様書_v2.pdf", type: "PDF", size: "2.4 MB", updated: "2024-12-12", author: "佐藤" },
     { id: 2, name: "システム構成図.pptx", type: "PPTX", size: "5.1 MB", updated: "2024-12-10", author: "鈴木" },
     { id: 3, name: "要件定義書.docx", type: "DOCX", size: "1.8 MB", updated: "2024-12-05", author: "田中" }
+  ];
+
+  const activities = [
+    { id: 1, user: "佐藤 次郎", action: "API仕様書_v2.pdf をアップロードしました", time: "2時間前", type: "file" },
+    { id: 2, user: "鈴木 花子", action: "定例進捗会議 #12 の議事録を作成しました", time: "5時間前", type: "minutes" },
+    { id: 3, user: "山田 太郎", action: "プロジェクト設定を更新しました", time: "1日前", type: "settings" },
+    { id: 4, user: "田中 一郎", action: "新規メンバーとして参加しました", time: "2日前", type: "member" },
   ];
 
   return (
@@ -99,6 +106,7 @@ export default function ProjectDetail() {
           <TabsTrigger value="summary">サマリ</TabsTrigger>
           <TabsTrigger value="minutes">議事録一覧</TabsTrigger>
           <TabsTrigger value="files">資料一覧</TabsTrigger>
+          <TabsTrigger value="activity">アクティビティ</TabsTrigger>
         </TabsList>
 
         {/* Summary Tab */}
@@ -263,6 +271,44 @@ export default function ProjectDetail() {
                       <div className="col-span-2 text-sm text-gray-500">{file.updated}</div>
                     </div>
                   </Link>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Activity Log Tab */}
+        <TabsContent value="activity">
+          <Card>
+            <CardHeader>
+              <CardTitle>アクティビティログ</CardTitle>
+              <CardDescription>プロジェクト内の活動履歴</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                {activities.map((activity) => (
+                  <div key={activity.id} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                        activity.type === 'file' ? 'bg-blue-100 text-blue-600' :
+                        activity.type === 'minutes' ? 'bg-green-100 text-green-600' :
+                        activity.type === 'settings' ? 'bg-gray-100 text-gray-600' :
+                        'bg-purple-100 text-purple-600'
+                      }`}>
+                        {activity.type === 'file' ? <File className="w-4 h-4" /> :
+                         activity.type === 'minutes' ? <FileText className="w-4 h-4" /> :
+                         activity.type === 'settings' ? <Settings className="w-4 h-4" /> :
+                         <Users className="w-4 h-4" />}
+                      </div>
+                      <div className="w-0.5 h-full bg-gray-100 mt-2 last:hidden"></div>
+                    </div>
+                    <div className="pb-6">
+                      <p className="text-sm text-gray-800">
+                        <span className="font-bold">{activity.user}</span> が {activity.action}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </CardContent>

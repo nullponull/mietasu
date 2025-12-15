@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Plus, Search, MoreVertical, Folder, Users, Clock } from "lucide-react";
 import { Link } from "wouter";
+import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function ProjectList() {
+  const [filterStatus, setFilterStatus] = useState<"all" | "active" | "archived">("active");
+
   const projects = [
     {
       id: 1,
@@ -47,9 +50,20 @@ export default function ProjectList() {
       members: 4,
       updated: "1週間前",
       status: "完了",
-      role: "管理者"
+      role: "管理者",
+      isArchived: true
     }
   ];
+
+  // Add isArchived property to other projects for consistency
+  const projectsWithStatus = projects.map(p => ({ ...p, isArchived: p.id === 4 }));
+
+  const filteredProjects = projectsWithStatus.filter(p => {
+    if (filterStatus === "all") return true;
+    if (filterStatus === "active") return !p.isArchived;
+    if (filterStatus === "archived") return p.isArchived;
+    return true;
+  });
 
   return (
     <div className="space-y-6">
@@ -70,13 +84,24 @@ export default function ProjectList() {
           <Input placeholder="プロジェクトを検索..." className="pl-9" />
         </div>
         <div className="flex gap-2">
-          <Button variant="outline">ステータス</Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">
+                {filterStatus === "active" ? "アクティブ" : filterStatus === "archived" ? "アーカイブ済み" : "すべて"}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem onClick={() => setFilterStatus("active")}>アクティブ</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setFilterStatus("archived")}>アーカイブ済み</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setFilterStatus("all")}>すべて</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button variant="outline">並び替え</Button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {projects.map((project) => (
+        {filteredProjects.map((project) => (
           <Card key={project.id} className="hover:shadow-md transition-shadow group relative">
             <CardHeader className="pb-3">
               <div className="flex justify-between items-start">

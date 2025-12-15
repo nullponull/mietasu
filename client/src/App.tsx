@@ -15,6 +15,7 @@ import ChatList from "@/pages/chat/ChatList";
 import ChatDetail from "@/pages/chat/ChatDetail";
 import FileUpload from "@/pages/upload/FileUpload";
 import ProjectDetail from "@/pages/project/ProjectDetail";
+import ProjectSettings from "@/pages/project/ProjectSettings";
 import ProjectList from "@/pages/project/ProjectList";
 import MeetingDetail from "@/pages/project/MeetingDetail";
 import FileDetail from "@/pages/project/FileDetail";
@@ -68,6 +69,11 @@ function Router() {
       <Route path="/project/:id">
         <DemoLayout>
           <ProjectDetail />
+        </DemoLayout>
+      </Route>
+      <Route path="/project/:id/settings">
+        <DemoLayout>
+          <ProjectSettings />
         </DemoLayout>
       </Route>
       <Route path="/project/:id/meeting/:mid">
